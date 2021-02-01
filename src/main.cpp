@@ -1,6 +1,6 @@
 #include <iostream>
 #include "Game.h"
-#include "DEFINITIONS.h"
+#include "config.h"
 
 
 int main()

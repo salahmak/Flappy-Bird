@@ -9,7 +9,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "DEFINITIONS.h"
+#include "config.h"
 #include "Game.h"
 #include "State.h"
 #include "Pipe.h"
@@ -42,7 +42,7 @@ public:
 
         Bird *bird;
 
-        Collision collision;
+        // Collision collision;
 
 
         sf::Clock _clock;

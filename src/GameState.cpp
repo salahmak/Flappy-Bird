@@ -94,8 +94,7 @@ void GameState::Update(float dt)
             // looping through the sprites to detect collition with the bird
             for(unsigned short int i = 0; i < landSprites.size(); ++i)
                 {
-                    if(collision.CheckSpriteCollision(bird->GetSprite(), 0.5f,
-                                                      landSprites[i], 1.0f))
+                    if(Collision::BoundingBoxTest(bird->GetSprite(), landSprites[i]))
                         {
                             _gameState = GameStates::gameOver;
                         }
@@ -109,8 +108,7 @@ void GameState::Update(float dt)
             // looping through the sprites to detect collision with the bird
             for(unsigned short int i = 0; i < pipeSprites.size(); ++i)
                 {
-                    if(collision.CheckSpriteCollision(bird->GetSprite(), 0.652f,
-                                                      pipeSprites[i], 1.0f))
+                    if(Collision::PixelPerfectTest(bird->GetSprite(), pipeSprites[i]))
                         {
                             _gameState = GameStates::gameOver;
                         }

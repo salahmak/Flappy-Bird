@@ -6,7 +6,7 @@
 #include <SFML/Graphics.hpp>
 #include <sstream>
 #include <iostream>
-#include "DEFINITIONS.h"
+#include "config.h"
 #include "Game.h"
 #include "State.h"
 

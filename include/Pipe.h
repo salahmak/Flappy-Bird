@@ -4,7 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include "Game.h"
 #include <vector>
-#include "DEFINITIONS.h"
+#include "config.h"
 #include "Rng.h"
 
 

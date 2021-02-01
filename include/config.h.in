@@ -1,0 +1,67 @@
+#pragma once
+#define PROJECT_VERSION_MAJOR @SFMLProject_VERSION_MAJOR@ 
+#define PROJECT_VERSION_MINOR @SFMLProject_VERSION_MINOR@ 
+#define RESOURCE_PATH "@RESOURCE_PATH@"
+
+
+
+#define SCREEN_WIDTH 768
+#define SCREEN_HEIGHT 640
+
+#define FRAMERATE 60.0f
+
+#define SPLASH_STATE_SHOW_TIME 0.1f
+#define SPLASH_SCENE_IMAGE_PATH "@RESOURCE_PATH@res/splash_bg.png"
+
+#define MAIN_MENU_BACKGROUND_PATH "@RESOURCE_PATH@res/sky.png"
+#define GAME_TITLE_PATH "@RESOURCE_PATH@res/title.png"
+#define PLAY_BUTTON_PATH "@RESOURCE_PATH@res/play_btn.png"
+
+
+
+#define GAME_OVER "@RESOURCE_PATH@res/game-over.png"
+#define GAME_OVER_BODY "@RESOURCE_PATH@res/game-over-body.png"
+
+
+// #define PIPE_DOWN_PATH "@RESOURCE_PATH@res/PipeDown.png"
+// #define PIPE_UP_PATH "@RESOURCE_PATH@res/PipeUp.png"
+
+#define PIPE_DOWN_PATH "@RESOURCE_PATH@res/pipeDown1.png"
+#define PIPE_UP_PATH "@RESOURCE_PATH@res/pipeUp1.png"
+
+
+#define PIPE_SPEED 200.0f
+#define PIPE_SPAWN_FREQ 1.3f
+
+
+#define LAND_PATH "@RESOURCE_PATH@res/land.png"
+
+
+#define BIRD_FRAME_1_PATH "@RESOURCE_PATH@res/bird-01.png"
+#define BIRD_FRAME_2_PATH "@RESOURCE_PATH@res/bird-02.png"
+#define BIRD_FRAME_3_PATH "@RESOURCE_PATH@res/bird-03.png"
+#define BIRD_FRAME_4_PATH "@RESOURCE_PATH@res/bird-04.png"
+
+
+
+
+#define BIRD_ANIMATION_TIME 0.4f
+
+//todo Convert this to an enum
+#define BIRD_STATE_STILL 1
+#define BIRD_STATE_FALLING 2
+#define BIRD_STATE_FLYING 3
+
+#define GRAVITY 350.0f
+#define FLYING_SPEED 200.0f
+#define FLYING_DURATION 0.25f
+
+#define ROTATION_SPEED 100.0f
+
+enum GameStates 
+{
+	ready,
+	playing,
+	gameOver
+};
+

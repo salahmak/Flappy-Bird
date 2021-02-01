@@ -16,10 +16,10 @@ void Pipe::DrawPipes()
 
 
 
-// random num between -160 and 90
+// random num between -150 and 90
 void Pipe::SpawnPipes()
 {
-    int randomNum = Rng::generate(-160, 90);
+    int randomNum = Rng::generate(-140, 90);
 
     this->SpawnInvisiblePipe(randomNum);
     this->SpawnBottomPipe(randomNum);
@@ -34,6 +34,8 @@ void Pipe::SpawnTopPipe(int Ypos)
 {
     sf::Sprite sprite(this->_data->assets.GetTexture("pipe up"));
 
+    sprite.setScale(1.3, 1);
+
     sprite.setPosition(this->_data->window.getSize().x,
                        this->_data->window.getSize().y - sprite.getGlobalBounds().height - Ypos);
 
@@ -44,8 +46,9 @@ void Pipe::SpawnTopPipe(int Ypos)
 void Pipe::SpawnBottomPipe(int Ypos)
 {
     sf::Sprite sprite(this->_data->assets.GetTexture("pipe down"));
+    sprite.setScale(1.3, 1);
 
-    sprite.setPosition(this->_data->window.getSize().x, - 250 - Ypos);
+    sprite.setPosition(this->_data->window.getSize().x, - 140 - Ypos);
 
 
     _pipeSprites.push_back(sprite);
@@ -54,6 +57,7 @@ void Pipe::SpawnBottomPipe(int Ypos)
 void Pipe::SpawnInvisiblePipe(int Ypos)
 {
     sf::Sprite sprite(this->_data->assets.GetTexture("pipe down"));
+    sprite.setScale(1.3, 1);
 
     sprite.setPosition(this->_data->window.getSize().x, - 250 - Ypos);
 
