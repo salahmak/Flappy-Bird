@@ -26,6 +26,7 @@ public:
 
 
 	const std::vector<sf::Sprite> &GetSprites() const;
+	std::vector<sf::Sprite> &GetScoringSprites();
 
 private:
 	GameDataRef _data;

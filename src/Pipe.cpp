@@ -11,6 +11,7 @@ void Pipe::DrawPipes()
         {
             _data->window.draw(_pipeSprites[i]);
         }
+
 }
 
 
@@ -21,6 +22,7 @@ void Pipe::SpawnPipes()
 {
     int randomNum = Rng::generate(-140, 90);
 
+    this->SpawnScoringPipe();
     this->SpawnInvisiblePipe(randomNum);
     this->SpawnBottomPipe(randomNum);
     this->SpawnTopPipe(randomNum);
@@ -84,15 +86,46 @@ void Pipe::MovePipes(float dt)
                     (*itr).move(-mouvement, 0);
                 }
         }
+
+
+    for(std::vector<sf::Sprite>::iterator itr = _scoringSprites.begin(); itr != _scoringSprites.end();
+           itr++)
+        {
+
+            if(((*itr).getPosition().x) < (0 - (*itr).getGlobalBounds().width))
+                {
+                    _scoringSprites.erase(itr);
+                }
+            else
+                {
+
+                    float mouvement = PIPE_SPEED * dt;
+                    (*itr).move(-mouvement, 0);
+                }
+        }
 }
 
 
+void Pipe::SpawnScoringPipe()
+{
+    sf::Sprite sprite(this->_data->assets.GetTexture("pipe down"));
+    sprite.setScale(0.5f, 2);
+
+    sprite.setPosition(this->_data->window.getSize().x + 30, 0);
+
+    _scoringSprites.push_back(sprite);
+}
 
 
 
 const std::vector<sf::Sprite> &Pipe::GetSprites() const
 {
     return _pipeSprites;
+}
+
+std::vector<sf::Sprite> &Pipe::GetScoringSprites()
+{
+    return _scoringSprites;
 }
 
 } // GameWrapper

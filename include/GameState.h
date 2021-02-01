@@ -16,6 +16,7 @@
 #include "Land.h"
 #include "Bird.h"
 #include "Collision.h"
+#include "Hud.h"
 
 namespace GameWrapper
 {
@@ -42,12 +43,14 @@ public:
 
         Bird *bird;
 
-        // Collision collision;
-
+        Hud *hud;
+        
 
         sf::Clock _clock;
 
         int _gameState;
+
+        int _score;
 };
 }
 

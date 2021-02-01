@@ -3,7 +3,7 @@
 #define PROJECT_VERSION_MINOR @SFMLProject_VERSION_MINOR@ 
 #define RESOURCE_PATH "@RESOURCE_PATH@"
 
-
+#include <iostream>
 
 #define SCREEN_WIDTH 768
 #define SCREEN_HEIGHT 640
@@ -65,3 +65,5 @@ enum GameStates
 	gameOver
 };
 
+
+#define FLAPPY_FONT_PATH "@RESOURCE_PATH@fonts/FlappyFont.ttf"

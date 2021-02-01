@@ -20,6 +20,9 @@ void GameState::Init()
     // loading the land texture
     _data->assets.LoadTexture("land", LAND_PATH);
 
+    // loading the flappyfont font
+    _data->assets.LoadFont("score font", FLAPPY_FONT_PATH);
+
     // loading the bird frames
     _data->assets.LoadTexture("bird 1", BIRD_FRAME_1_PATH);
     _data->assets.LoadTexture("bird 2", BIRD_FRAME_2_PATH);
@@ -32,10 +35,14 @@ void GameState::Init()
 
     bird = new Bird(this->_data);
 
+    hud = new Hud(_data);
+
     // setting the texture of the background
     _background.setTexture(_data->assets.GetTexture("game background"));
 
     _gameState = GameStates::ready;
+
+    _score = 0;
 }
 
 void GameState::HandleInput()
@@ -94,7 +101,8 @@ void GameState::Update(float dt)
             // looping through the sprites to detect collition with the bird
             for(unsigned short int i = 0; i < landSprites.size(); ++i)
                 {
-                    if(Collision::BoundingBoxTest(bird->GetSprite(), landSprites[i]))
+                    if(Collision::BoundingBoxTest(bird->GetSprite(),
+                                                  landSprites[i]))
                         {
                             _gameState = GameStates::gameOver;
                         }
@@ -103,14 +111,31 @@ void GameState::Update(float dt)
             // Detecting collision with the pipes
             // Getting the Pipe sprites vector:
             std::vector<sf::Sprite> pipeSprites = pipe->GetSprites();
-            // std::vector<sf::Sprite> pipeSprites;
 
             // looping through the sprites to detect collision with the bird
             for(unsigned short int i = 0; i < pipeSprites.size(); ++i)
                 {
-                    if(Collision::PixelPerfectTest(bird->GetSprite(), pipeSprites[i]))
+                    if(Collision::PixelPerfectTest(bird->GetSprite(),
+                                                   pipeSprites[i]))
                         {
                             _gameState = GameStates::gameOver;
+                        }
+                }
+
+            // The scoring system
+            // Getting the Scoring sprites vector:
+            std::vector<sf::Sprite>& scoringSprites
+                = pipe->GetScoringSprites();
+
+            // looping through the sprites to detect collision with the bird
+            for(unsigned short int i = 0; i < scoringSprites.size(); ++i)
+                {
+                    if(Collision::BoundingBoxTest(bird->GetSprite(),
+                                                  scoringSprites[i]))
+                        {
+                            _score++;
+                            hud->UpdateScore(_score);
+                            scoringSprites.erase(scoringSprites.begin() + i);
                         }
                 }
         }
@@ -123,6 +148,7 @@ void GameState::Draw(float dt)
     pipe->DrawPipes();
     land->DrawLand();
     bird->Draw();
+    hud->Draw();
     _data->window.display();
 }
 
