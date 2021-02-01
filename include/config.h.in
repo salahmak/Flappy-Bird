@@ -67,3 +67,8 @@ enum GameStates
 
 
 #define FLAPPY_FONT_PATH "@RESOURCE_PATH@fonts/FlappyFont.ttf"
+
+
+#define FLASH_SPEED 1500.0f
+
+#define TIME_BEFORE_GAME_OVER 1.5f

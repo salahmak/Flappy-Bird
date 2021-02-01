@@ -30,6 +30,7 @@ public:
         sf::Sprite _background;
         sf::Sprite _gameOver;
         sf::Sprite _gameOverBody;
+        sf::Sprite _playBtn;
 
 };
 }

@@ -35,7 +35,9 @@ void GameState::Init()
 
     bird = new Bird(this->_data);
 
-    hud = new Hud(_data);
+    hud = new Hud(this->_data);
+
+    flash = new Flash(this->_data);
 
     // setting the texture of the background
     _background.setTexture(_data->assets.GetTexture("game background"));
@@ -105,6 +107,7 @@ void GameState::Update(float dt)
                                                   landSprites[i]))
                         {
                             _gameState = GameStates::gameOver;
+                            _clock.restart();
                         }
                 }
 
@@ -119,6 +122,7 @@ void GameState::Update(float dt)
                                                    pipeSprites[i]))
                         {
                             _gameState = GameStates::gameOver;
+                            _clock.restart();
                         }
                 }
 
@@ -139,6 +143,15 @@ void GameState::Update(float dt)
                         }
                 }
         }
+
+        if(_gameState == GameStates::gameOver)
+        {
+            this->flash->Update(dt);
+            if(_clock.getElapsedTime().asSeconds() > TIME_BEFORE_GAME_OVER)
+            {
+                this->_data->machine.AddState(StateRef(new GameOverState(this->_data)));
+            }
+        }
 }
 
 void GameState::Draw(float dt)
@@ -149,6 +162,7 @@ void GameState::Draw(float dt)
     land->DrawLand();
     bird->Draw();
     hud->Draw();
+    flash->Draw();
     _data->window.display();
 }
 

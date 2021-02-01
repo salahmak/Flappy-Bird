@@ -17,6 +17,7 @@
 #include "Bird.h"
 #include "Collision.h"
 #include "Hud.h"
+#include "Flash.h"
 
 namespace GameWrapper
 {
@@ -44,7 +45,9 @@ public:
         Bird *bird;
 
         Hud *hud;
-        
+
+        Flash *flash;
+
 
         sf::Clock _clock;
 
