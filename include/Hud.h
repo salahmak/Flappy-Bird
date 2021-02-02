@@ -13,7 +13,7 @@ namespace GameWrapper
 class Hud
 {
 public:
-	Hud(GameDataRef data);
+	Hud(GameDataRef data, int highScore);
 
     void Draw();
     void UpdateScore(int score);
@@ -21,6 +21,7 @@ public:
   private:
     GameDataRef _data;
     sf::Text _scoreText;
+    sf::Text _highScoreText;
 	
 };
 

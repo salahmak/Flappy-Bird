@@ -3,8 +3,8 @@
 
 
 #include <SFML/Graphics.hpp>
-#include <sstream>
 #include <iostream>
+#include <fstream>
 #include "config.h"
 #include "Game.h"
 #include "State.h"
@@ -29,6 +29,10 @@ public:
 		sf::Sprite _background;
 		sf::Sprite _playBtn;
 		sf::Sprite _title;
+
+		sf::Text _highScoreText;
+
+		int _highScore;
 
 };
 }

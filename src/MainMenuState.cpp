@@ -4,7 +4,28 @@
 namespace GameWrapper
 {
 
-MainMenuState::MainMenuState(GameDataRef data) : _data(data) {}
+MainMenuState::MainMenuState(GameDataRef data) : _data(data)
+{
+    _highScore = 0;
+    std::ifstream readFile;
+    readFile.open(HIGHSCORE_PATH);
+    if(readFile.is_open())
+        {
+            if(readFile.peek() == std::ifstream::traits_type::eof())
+                {
+                    _highScore = 0;
+                }
+            else
+                {
+                    while(!readFile.eof())
+                        {
+                            readFile >> _highScore;
+                        }
+                }
+        }
+    readFile.close();
+
+}
 
 void MainMenuState::Init()
 {
@@ -17,6 +38,10 @@ void MainMenuState::Init()
 
     //loading the play button image
     _data->assets.LoadTexture("play button", PLAY_BUTTON_PATH);
+
+
+    // loading the flappyfont font
+    _data->assets.LoadFont("score font", FLAPPY_FONT_PATH);
 
 
     //setting the texture of the background, play btn, title to their sprites
@@ -40,6 +65,24 @@ void MainMenuState::Init()
     _playBtn.setPosition((SCREEN_WIDTH / 2) - (_playBtn.getGlobalBounds().width / 2),
         (SCREEN_HEIGHT / 2) - (_playBtn.getGlobalBounds().height / 2 ));
 
+
+    //setting the highScore font
+    _highScoreText.setFont(this->_data->assets.GetFont("score font"));
+
+    _highScoreText.setString("High score: " + std::to_string(_highScore));
+
+    _highScoreText.setCharacterSize(30);
+
+    _highScoreText.setOutlineColor(sf::Color::Black);
+
+    _highScoreText.setOutlineThickness(1.0f);
+
+    _highScoreText.setFillColor(sf::Color::White);
+
+    _highScoreText.setOrigin(_highScoreText.getGlobalBounds().width/2, _highScoreText.getGlobalBounds().height/2);
+
+    _highScoreText.setPosition(SCREEN_WIDTH / 2, SCREEN_HEIGHT - _playBtn.getGlobalBounds().height);
+
 }
 
 void MainMenuState::HandleInput()
@@ -55,7 +98,7 @@ void MainMenuState::HandleInput()
 
             if(this->_data->input.IsSpriteClicked(_playBtn, event, sf::Mouse::Left, this->_data->window)){
                 std::cout << "clicked"<<std::endl;
-                this->_data->machine.AddState(StateRef(new GameState(_data)), true);
+                this->_data->machine.AddState(StateRef(new GameState(_data, _highScore)), true);
             }
         }
 }
@@ -74,6 +117,7 @@ void MainMenuState::Draw(float dt)
     _data->window.draw(_background);
     _data->window.draw(_title);
     _data->window.draw(_playBtn);
+    _data->window.draw(_highScoreText);
     _data->window.display();
 }
 

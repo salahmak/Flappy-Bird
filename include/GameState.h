@@ -25,7 +25,7 @@ namespace GameWrapper
 class GameState: public State
 {
 public:
-    GameState(GameDataRef data);
+    GameState(GameDataRef data, int highScore);
 
         void Init();
         void Update(float dt);
@@ -54,6 +54,7 @@ public:
         int _gameState;
 
         int _score;
+        int _highScore;
 };
 }
 

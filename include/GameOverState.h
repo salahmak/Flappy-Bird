@@ -9,6 +9,7 @@
 #include "config.h"
 #include "Game.h"
 #include "State.h"
+#include <fstream>
 
 namespace GameWrapper
 {
@@ -16,7 +17,7 @@ namespace GameWrapper
 class GameOverState: public State
 {
 public:
-    GameOverState(GameDataRef data);
+    GameOverState(GameDataRef data, int score);
 
         void Init();
         void Update(float dt);
@@ -31,6 +32,11 @@ public:
         sf::Sprite _gameOver;
         sf::Sprite _gameOverBody;
         sf::Sprite _playBtn;
+        sf::Text _scoreText;
+        sf::Text _highScoreText;
+
+        int _score;
+        int _highScore;
 
 };
 }

@@ -4,7 +4,7 @@
 namespace GameWrapper
 {
 
-GameState::GameState(GameDataRef data) : _data(data) {}
+GameState::GameState(GameDataRef data, int highScore) : _data(data), _highScore(highScore) {}
 
 void GameState::Init()
 {
@@ -20,8 +20,6 @@ void GameState::Init()
     // loading the land texture
     _data->assets.LoadTexture("land", LAND_PATH);
 
-    // loading the flappyfont font
-    _data->assets.LoadFont("score font", FLAPPY_FONT_PATH);
 
     // loading the bird frames
     _data->assets.LoadTexture("bird 1", BIRD_FRAME_1_PATH);
@@ -35,7 +33,7 @@ void GameState::Init()
 
     bird = new Bird(this->_data);
 
-    hud = new Hud(this->_data);
+    hud = new Hud(this->_data, _highScore);
 
     flash = new Flash(this->_data);
 
@@ -149,7 +147,7 @@ void GameState::Update(float dt)
             this->flash->Update(dt);
             if(_clock.getElapsedTime().asSeconds() > TIME_BEFORE_GAME_OVER)
             {
-                this->_data->machine.AddState(StateRef(new GameOverState(this->_data)));
+                this->_data->machine.AddState(StateRef(new GameOverState(_data, _score)));
             }
         }
 }
