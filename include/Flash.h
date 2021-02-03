@@ -1,9 +1,9 @@
 #ifndef FLASH_H
 #define FLASH_H
 
-#include <SFML/Graphics.hpp>
 #include "Game.h"
 #include "config.h"
+#include <SFML/Graphics.hpp>
 
 namespace GameWrapper
 {

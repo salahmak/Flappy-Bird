@@ -53,7 +53,7 @@ void StateMachine::ProcessStateChanges()
 
 StateRef& StateMachine::GetActiveState()
 {
-	return this->_states.top();
+    return this->_states.top();
 }
 
 } // Game

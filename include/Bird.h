@@ -1,46 +1,44 @@
 #ifndef BIRD_H
 #define BIRD_H
 
-#include <SFML/Graphics.hpp>
 #include "Game.h"
 #include "config.h"
+#include <SFML/Graphics.hpp>
 #include <vector>
 
+namespace GameWrapper
+{
 
-namespace GameWrapper {
+class Bird
+{
+  public:
+    Bird(GameDataRef data);
 
-	class Bird
-	{
-	public:
-		Bird(GameDataRef data);
+    void Draw();
+    void Animate(float dt);
 
-		void Draw();
-		void Animate(float dt);
+    void Update(float dt);
+    void Tap();
 
-		void Update(float dt);
-		void Tap();
+    const sf::Sprite& GetSprite() const;
 
-		const sf::Sprite &GetSprite() const;
-		
+  private:
+    GameDataRef _data;
+    sf::Sprite _birdSprite;
 
-	private:
-		GameDataRef _data;
-		sf::Sprite _birdSprite;
+    std::vector<sf::Texture> _animationFrames;
 
-		std::vector<sf::Texture> _animationFrames;
+    unsigned int _animationIterator;
 
-		unsigned int _animationIterator;
+    sf::Clock _clock;
 
-		sf::Clock _clock;
+    sf::Clock _mouvementClock;
 
-		sf::Clock _mouvementClock;
+    int _birdState;
 
-		int _birdState;
-
-		float _rotation;
-	};
+    float _rotation;
+};
 
 } // GameWrapper
-
 
 #endif // BIRD_H

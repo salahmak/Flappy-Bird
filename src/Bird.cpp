@@ -63,25 +63,30 @@ void Bird::Update(float dt)
 
             _rotation += ROTATION_SPEED * dt;
 
-            if(_rotation > 25.0f){
-            	_rotation = 25.0f;
-            }
+            if(_rotation > 25.0f)
+                {
+                    _rotation = 25.0f;
+                }
 
             _birdSprite.setRotation(_rotation);
-
         }
     else if(_birdState == BIRD_STATE_FLYING)
         {
-            if(_birdSprite.getPosition().y < 0 + _birdSprite.getGlobalBounds().height / 2){
-                _birdSprite.setPosition(_birdSprite.getPosition().x, 0 + _birdSprite.getGlobalBounds().height / 2);
-            }
+            if(_birdSprite.getPosition().y
+               < 0 + _birdSprite.getGlobalBounds().height / 2)
+                {
+                    _birdSprite.setPosition(
+                        _birdSprite.getPosition().x,
+                        0 + _birdSprite.getGlobalBounds().height / 2);
+                }
             _birdSprite.move(0, -FLYING_SPEED * dt);
 
             _rotation -= ROTATION_SPEED * dt;
 
-            if(_rotation < -25.0f){
-            	_rotation = -25.0f;
-            }
+            if(_rotation < -25.0f)
+                {
+                    _rotation = -25.0f;
+                }
 
             _birdSprite.setRotation(_rotation);
         }
@@ -99,8 +104,7 @@ void Bird::Tap()
     _birdState = BIRD_STATE_FLYING;
 }
 
-
-const sf::Sprite &Bird::GetSprite() const
+const sf::Sprite& Bird::GetSprite() const
 {
     return _birdSprite;
 }

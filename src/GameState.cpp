@@ -4,17 +4,19 @@
 namespace GameWrapper
 {
 
-GameState::GameState(GameDataRef data, int highScore) : _data(data), _highScore(highScore) {}
+GameState::GameState(GameDataRef data, int highScore)
+    : _data(data), _highScore(highScore)
+{
+}
 GameState::~GameState()
 {
-    std::cout << "destructor called"<<std::endl;
+    std::cout << "destructor called" << std::endl;
     delete this->pipe;
     delete this->land;
     delete this->hud;
     delete this->bird;
     delete this->flash;
 }
-
 
 void GameState::Init()
 {
@@ -26,7 +28,6 @@ void GameState::Init()
 
     // loading the land texture
     _data->assets.LoadTexture("land", LAND_PATH);
-
 
     // loading the bird frames
     _data->assets.LoadTexture("bird 1", BIRD_FRAME_1_PATH);
@@ -149,13 +150,14 @@ void GameState::Update(float dt)
                 }
         }
 
-        if(_gameState == GameStates::gameOver)
+    if(_gameState == GameStates::gameOver)
         {
             this->flash->Update(dt);
             if(_clock.getElapsedTime().asSeconds() > TIME_BEFORE_GAME_OVER)
-            {
-                this->_data->machine.AddState(StateRef(new GameOverState(_data, _score)));
-            }
+                {
+                    this->_data->machine.AddState(
+                        StateRef(new GameOverState(_data, _score)));
+                }
         }
 }
 

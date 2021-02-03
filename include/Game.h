@@ -1,34 +1,28 @@
 #ifndef GAME_H
 #define GAME_H
 
-
-
+#include "AssetManager.h"
+#include "InputManager.h"
+#include "StateMachine.h"
+#include "config.h"
 #include <SFML/Graphics.hpp>
 #include <memory>
 #include <string>
-#include "StateMachine.h"
-#include "AssetManager.h"
-#include "InputManager.h"
-#include "config.h"
-
-
 
 namespace GameWrapper
 {
 
 struct GameData
 {
-	GameData(){}
-	~GameData(){}
+    GameData() {}
+    ~GameData() {}
     StateMachine machine;
     sf::RenderWindow window;
     AssetManager assets;
     InputManager input;
 };
 
-
 typedef std::shared_ptr<GameData> GameDataRef;
-
 
 class Game
 {
@@ -43,7 +37,6 @@ class Game
 
     void run();
 };
-
 
 } // Game
 

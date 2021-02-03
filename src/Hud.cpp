@@ -19,8 +19,6 @@ Hud::Hud(GameDataRef data, int highScore) : _data(data)
 
     _scoreText.setPosition(10, 0);
 
-
-
     _highScoreText.setFont(this->_data->assets.GetFont("score font"));
 
     _highScoreText.setString("HI=" + std::to_string(highScore));
@@ -33,12 +31,15 @@ Hud::Hud(GameDataRef data, int highScore) : _data(data)
 
     _highScoreText.setFillColor(sf::Color::White);
 
-    _highScoreText.setPosition(10, _scoreText.getGlobalBounds().height + _highScoreText.getGlobalBounds().height);
+    _highScoreText.setPosition(10,
+                               _scoreText.getGlobalBounds().height
+                                   + _highScoreText.getGlobalBounds().height);
 }
 
-void Hud::Draw(){
-	this->_data->window.draw(_scoreText);
-	this->_data->window.draw(_highScoreText);
+void Hud::Draw()
+{
+    this->_data->window.draw(_scoreText);
+    this->_data->window.draw(_highScoreText);
 }
 
 void Hud::UpdateScore(int score)

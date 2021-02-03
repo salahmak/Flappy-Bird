@@ -24,50 +24,45 @@ MainMenuState::MainMenuState(GameDataRef data) : _data(data)
                 }
         }
     readFile.close();
-
 }
 
-MainMenuState::~MainMenuState(){}
+MainMenuState::~MainMenuState() {}
 
 void MainMenuState::Init()
 {
-    //loading the main menu background
+    // loading the main menu background
     _data->assets.LoadTexture("background", BACKGROUND_PATH);
 
-    //loading the title image
+    // loading the title image
     _data->assets.LoadTexture("game title", GAME_TITLE_PATH);
 
-    //loading the play button image
+    // loading the play button image
     _data->assets.LoadTexture("play button", PLAY_BUTTON_PATH);
-
 
     // loading the flappyfont font
     _data->assets.LoadFont("score font", FLAPPY_FONT_PATH);
 
-
-    //setting the texture of the background, play btn, title to their sprites
-    _background.setTexture(
-        this->_data->assets.GetTexture("background"));
+    // setting the texture of the background, play btn, title to their sprites
+    _background.setTexture(this->_data->assets.GetTexture("background"));
 
     _playBtn.setTexture(this->_data->assets.GetTexture("play button"));
 
     _title.setTexture(this->_data->assets.GetTexture("game title"));
 
-
-    //setting the title's position
+    // setting the title's position
     _title.setScale(0.15f, 0.15f);
 
-    _title.setPosition((SCREEN_WIDTH / 2) - (_title.getGlobalBounds().width / 2),
-        (_title.getGlobalBounds().height / 2));
+    _title.setPosition((SCREEN_WIDTH / 2)
+                           - (_title.getGlobalBounds().width / 2),
+                       (_title.getGlobalBounds().height / 2));
 
-
-    //setting the play btn's position
+    // setting the play btn's position
     _playBtn.setScale(2.0f, 2.0f);
-    _playBtn.setPosition((SCREEN_WIDTH / 2) - (_playBtn.getGlobalBounds().width / 2),
-        (SCREEN_HEIGHT / 2) - (_playBtn.getGlobalBounds().height / 2 ));
+    _playBtn.setPosition(
+        (SCREEN_WIDTH / 2) - (_playBtn.getGlobalBounds().width / 2),
+        (SCREEN_HEIGHT / 2) - (_playBtn.getGlobalBounds().height / 2));
 
-
-    //setting the highScore font
+    // setting the highScore font
     _highScoreText.setFont(this->_data->assets.GetFont("score font"));
 
     _highScoreText.setString("High score: " + std::to_string(_highScore));
@@ -80,10 +75,11 @@ void MainMenuState::Init()
 
     _highScoreText.setFillColor(sf::Color::White);
 
-    _highScoreText.setOrigin(_highScoreText.getGlobalBounds().width/2, _highScoreText.getGlobalBounds().height/2);
+    _highScoreText.setOrigin(_highScoreText.getGlobalBounds().width / 2,
+                             _highScoreText.getGlobalBounds().height / 2);
 
-    _highScoreText.setPosition(SCREEN_WIDTH / 2, SCREEN_HEIGHT - _playBtn.getGlobalBounds().height);
-
+    _highScoreText.setPosition(
+        SCREEN_WIDTH / 2, SCREEN_HEIGHT - _playBtn.getGlobalBounds().height);
 }
 
 void MainMenuState::HandleInput()
@@ -97,10 +93,13 @@ void MainMenuState::HandleInput()
                     _data->window.close();
                 }
 
-            if(this->_data->input.IsSpriteClicked(_playBtn, event, sf::Mouse::Left, this->_data->window)){
-                std::cout << "clicked"<<std::endl;
-                this->_data->machine.AddState(StateRef(new GameState(_data, _highScore)), true);
-            }
+            if(this->_data->input.IsSpriteClicked(
+                   _playBtn, event, sf::Mouse::Left, this->_data->window))
+                {
+                    std::cout << "clicked" << std::endl;
+                    this->_data->machine.AddState(
+                        StateRef(new GameState(_data, _highScore)), true);
+                }
         }
 }
 
