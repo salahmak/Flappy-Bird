@@ -52,7 +52,7 @@ void GameOverState::Init()
 
     //setting the texture of the background
     _background.setTexture(
-        _data->assets.GetTexture("game background"));
+        _data->assets.GetTexture("background"));
 
     //setting the texture of the gameover
    _gameOver.setTexture(_data->assets.GetTexture("game over"));

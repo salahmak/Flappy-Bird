@@ -26,6 +26,8 @@ class GameState: public State
 {
 public:
     GameState(GameDataRef data, int highScore);
+    ~GameState();
+
 
         void Init();
         void Update(float dt);

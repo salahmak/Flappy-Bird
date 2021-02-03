@@ -69,3 +69,5 @@ add_custom_target(run
     DEPENDS FlappyBird
     WORKING_DIRECTORY ${CMAKE_PROJECT_DIR}
 )
+
+set(CMAKE_CXX_FLAGS "-g")

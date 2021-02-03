@@ -19,6 +19,7 @@ void StateMachine::ProcessStateChanges()
 {
     if(this->_isRemoving && !this->_states.empty())
         {
+            // delete this->_states.top();
             this->_states.pop();
 
             if(!this->_states.empty())
@@ -35,6 +36,7 @@ void StateMachine::ProcessStateChanges()
                 {
                     if(this->_isReplacing)
                         {
+                            // delete this->_states.top();
                             this->_states.pop();
                         }
                     else

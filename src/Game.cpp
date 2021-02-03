@@ -31,9 +31,6 @@ void Game::run()
 		this->_data->machine.GetActiveState()->Draw(0.1f);
 	}
 
-
-
-
 }
 
 

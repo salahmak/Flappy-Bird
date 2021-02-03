@@ -5,12 +5,19 @@ namespace GameWrapper
 {
 
 GameState::GameState(GameDataRef data, int highScore) : _data(data), _highScore(highScore) {}
+GameState::~GameState()
+{
+    std::cout << "destructor called"<<std::endl;
+    delete this->pipe;
+    delete this->land;
+    delete this->hud;
+    delete this->bird;
+    delete this->flash;
+}
+
 
 void GameState::Init()
 {
-    // loading the main menu background
-    _data->assets.LoadTexture("game background", MAIN_MENU_BACKGROUND_PATH);
-
     // loading the pipeDown texture
     _data->assets.LoadTexture("pipe down", PIPE_DOWN_PATH);
 
@@ -38,7 +45,7 @@ void GameState::Init()
     flash = new Flash(this->_data);
 
     // setting the texture of the background
-    _background.setTexture(_data->assets.GetTexture("game background"));
+    _background.setTexture(_data->assets.GetTexture("background"));
 
     _gameState = GameStates::ready;
 

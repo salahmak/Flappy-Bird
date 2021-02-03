@@ -27,11 +27,12 @@ MainMenuState::MainMenuState(GameDataRef data) : _data(data)
 
 }
 
+MainMenuState::~MainMenuState(){}
+
 void MainMenuState::Init()
 {
     //loading the main menu background
-    _data->assets.LoadTexture("main menu background",
-                              MAIN_MENU_BACKGROUND_PATH);
+    _data->assets.LoadTexture("background", BACKGROUND_PATH);
 
     //loading the title image
     _data->assets.LoadTexture("game title", GAME_TITLE_PATH);
@@ -46,7 +47,7 @@ void MainMenuState::Init()
 
     //setting the texture of the background, play btn, title to their sprites
     _background.setTexture(
-        this->_data->assets.GetTexture("main menu background"));
+        this->_data->assets.GetTexture("background"));
 
     _playBtn.setTexture(this->_data->assets.GetTexture("play button"));
 

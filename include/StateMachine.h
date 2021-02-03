@@ -8,6 +8,7 @@
 namespace GameWrapper
 {
 
+// typedef State *StateRef;
 typedef std::unique_ptr<State> StateRef;
 
 class StateMachine

@@ -5,6 +5,7 @@ namespace GameWrapper
 {
 
 SplashState::SplashState(GameDataRef data) : _data(data) {}
+SplashState::~SplashState() {}
 
 void SplashState::Init()
 {
