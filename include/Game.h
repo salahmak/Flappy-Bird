@@ -4,6 +4,7 @@
 #include "AssetManager.h"
 #include "InputManager.h"
 #include "StateMachine.h"
+#include "SoundManager.h"
 #include "config.h"
 #include <SFML/Graphics.hpp>
 #include <memory>
@@ -20,6 +21,7 @@ struct GameData
     sf::RenderWindow window;
     AssetManager assets;
     InputManager input;
+    SoundManager sound;
 };
 
 typedef std::shared_ptr<GameData> GameDataRef;

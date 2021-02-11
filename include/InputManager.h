@@ -16,6 +16,8 @@ class InputManager
 
     bool IsKeyPressed(sf::Event event, sf::Keyboard::Key key);
 
+    bool IsMouseClicked(sf::Event event, sf::Mouse::Button button);
+
     sf::Vector2i GetMousePosition(sf::RenderWindow& window);
 };
 

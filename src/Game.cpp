@@ -1,5 +1,4 @@
 #include "Game.h"
-#include "GameState.h"
 #include "SplashState.h"
 
 namespace GameWrapper
@@ -11,7 +10,6 @@ Game::Game(int width, int height, std::string title)
                                sf::Style::Close | sf::Style::Titlebar);
     this->_data->window.setFramerateLimit(60);
     this->_data->window.setKeyRepeatEnabled(false);
-    // this->_data->machine.AddState(StateRef(new GameState(_data)));
     this->_data->machine.AddState(StateRef(new SplashState(_data)));
 
     this->run();

@@ -1,6 +1,7 @@
 #ifndef ASSET_MANAGER_H
 #define ASSET_MANAGER_H
 
+#include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 #include <map>
 

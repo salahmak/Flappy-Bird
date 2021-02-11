@@ -16,6 +16,9 @@ void SplashState::Init()
     // loading the assets
     _data->assets.LoadTexture("splash background", SPLASH_SCENE_IMAGE_PATH);
 
+    _background.setTexture(
+        this->_data->assets.GetTexture("splash background"));
+
     // loading the main menu background
     _data->assets.LoadTexture("background", BACKGROUND_PATH);
 
@@ -37,14 +40,28 @@ void SplashState::Init()
     // loading the land texture
     _data->assets.LoadTexture("land", LAND_PATH);
 
+    // loading the game over texture
+    _data->assets.LoadTexture("game over", GAME_OVER);
+
+    // loading the game over body texture
+    _data->assets.LoadTexture("game over body", GAME_OVER_BODY);
+
     // loading the bird frames
     _data->assets.LoadTexture("bird 1", BIRD_FRAME_1_PATH);
     _data->assets.LoadTexture("bird 2", BIRD_FRAME_2_PATH);
     _data->assets.LoadTexture("bird 3", BIRD_FRAME_3_PATH);
     _data->assets.LoadTexture("bird 4", BIRD_FRAME_4_PATH);
 
-    _background.setTexture(
-        this->_data->assets.GetTexture("splash background"));
+
+
+    // loading the required sounds
+    this->_data->sound.LoadSound("hit", HIT_SOUND_PATH);
+    this->_data->sound.LoadSound("point", POINT_SOUND_PATH);
+    this->_data->sound.LoadSound("wing", WING_SOUND_PATH);
+
+
+
+    this->_data->sound.Init();
 }
 
 void SplashState::HandleInput()

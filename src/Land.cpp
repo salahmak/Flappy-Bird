@@ -6,8 +6,15 @@ namespace GameWrapper
 
 Land::Land(GameDataRef data) : _data(data)
 {
-    sf::Sprite sprite(this->_data->assets.GetTexture("land"));
-    sf::Sprite sprite2(this->_data->assets.GetTexture("land"));
+    sf::Sprite sprite;
+    sf::Sprite sprite2;
+
+    sprite.setTexture(this->_data->assets.GetTexture("land"));
+    sprite2.setTexture(this->_data->assets.GetTexture("land"));
+
+    sprite.setScale(this->_data->window.getSize().x / sprite.getLocalBounds().width, 1);
+    sprite2.setScale(this->_data->window.getSize().x / sprite2.getLocalBounds().width, 1);
+
 
     sprite.setPosition(
         0, (SCREEN_HEIGHT - (sprite.getGlobalBounds().height / 2)));
@@ -17,6 +24,7 @@ Land::Land(GameDataRef data) : _data(data)
 
     _landSprites.push_back(sprite);
     _landSprites.push_back(sprite2);
+
 }
 
 void Land::MoveLand(float dt)
@@ -30,9 +38,8 @@ void Land::MoveLand(float dt)
             if(_landSprites[i].getPosition().x
                < -_landSprites[i].getGlobalBounds().width)
                 {
-                    sf::Vector2f position(SCREEN_WIDTH,
+                    _landSprites[i].setPosition(this->_data->window.getSize().x - 5,
                                           _landSprites[i].getPosition().y);
-                    _landSprites[i].setPosition(position);
                 }
         }
 }

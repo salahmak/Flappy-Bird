@@ -16,6 +16,7 @@ class Bird
 
     void Draw();
     void Animate(float dt);
+    void AnimateDeath(float dt);
 
     void Update(float dt);
     void Tap();
@@ -27,6 +28,7 @@ class Bird
     sf::Sprite _birdSprite;
 
     std::vector<sf::Texture> _animationFrames;
+    std::vector<sf::Texture> _deathFrames;
 
     unsigned int _animationIterator;
 

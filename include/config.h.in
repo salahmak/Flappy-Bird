@@ -5,7 +5,7 @@
 
 #include <iostream>
 
-#define SCREEN_WIDTH 768
+#define SCREEN_WIDTH 980
 #define SCREEN_HEIGHT 640
 
 #define FRAMERATE 60.0f
@@ -15,7 +15,7 @@
 
 #define BACKGROUND_PATH "@RESOURCE_PATH@textures/sky.png"
 #define GAME_TITLE_PATH "@RESOURCE_PATH@textures/title.png"
-#define PLAY_BUTTON_PATH "@RESOURCE_PATH@textures/play_btn.png"
+#define PLAY_BUTTON_PATH "@RESOURCE_PATH@textures/Icon83.png"
 
 
 
@@ -37,13 +37,13 @@
 #define PIPE_SPAWN_FREQ 1.3f
 
 
-#define LAND_PATH "@RESOURCE_PATH@textures/land.png"
+#define LAND_PATH "@RESOURCE_PATH@textures/landGreen.png"
 
 
-#define BIRD_FRAME_1_PATH "@RESOURCE_PATH@textures/bird-01.png"
-#define BIRD_FRAME_2_PATH "@RESOURCE_PATH@textures/bird-02.png"
-#define BIRD_FRAME_3_PATH "@RESOURCE_PATH@textures/bird-03.png"
-#define BIRD_FRAME_4_PATH "@RESOURCE_PATH@textures/bird-04.png"
+#define BIRD_FRAME_1_PATH "@RESOURCE_PATH@textures/frame-1.png"
+#define BIRD_FRAME_2_PATH "@RESOURCE_PATH@textures/frame-2.png"
+#define BIRD_FRAME_3_PATH "@RESOURCE_PATH@textures/frame-3.png"
+#define BIRD_FRAME_4_PATH "@RESOURCE_PATH@textures/frame-4.png"
 
 
 
@@ -77,3 +77,8 @@ enum GameStates
 #define TIME_BEFORE_GAME_OVER 1.5f
 
 #define HIGHSCORE_PATH "@RESOURCE_PATH@HighScore.txt"
+
+
+#define WING_SOUND_PATH "@RESOURCE_PATH@sounds/Wing.wav"
+#define HIT_SOUND_PATH "@RESOURCE_PATH@sounds/bruh.wav"
+#define POINT_SOUND_PATH "@RESOURCE_PATH@sounds/Point.wav"

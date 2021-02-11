@@ -1,6 +1,9 @@
 #include "GameState.h"
 #include "GameOverState.h"
 
+//todo MAKE THE BACKGROUND ANIMATED ---> done
+//todo add sounds
+
 namespace GameWrapper
 {
 
@@ -8,6 +11,7 @@ GameState::GameState(GameDataRef data, int highScore)
     : _data(data), _highScore(highScore)
 {
 }
+
 GameState::~GameState()
 {
     delete this->pipe;
@@ -15,11 +19,11 @@ GameState::~GameState()
     delete this->hud;
     delete this->bird;
     delete this->flash;
+    delete this->background;
 }
 
 void GameState::Init()
 {
-
 
     pipe = new Pipe(this->_data);
 
@@ -31,8 +35,14 @@ void GameState::Init()
 
     flash = new Flash(this->_data);
 
-    // setting the texture of the background
-    _background.setTexture(_data->assets.GetTexture("background"));
+    background = new Background(this->_data);
+
+    // // setting the texture of the background
+    // _background.setTexture(_data->assets.GetTexture("background"));
+    // // setting the scale of the background
+    // _background.setScale(SCREEN_WIDTH / _background.getGlobalBounds().width,
+    //                      SCREEN_HEIGHT /
+    //                      _background.getGlobalBounds().height);
 
     _gameState = GameStates::ready;
 
@@ -50,8 +60,7 @@ void GameState::HandleInput()
                     _data->window.close();
                 }
 
-            if(this->_data->input.IsSpriteClicked(
-                   _background, event, sf::Mouse::Left, this->_data->window)
+            if(this->_data->input.IsMouseClicked(event, sf::Mouse::Left)
                || this->_data->input.IsKeyPressed(event, sf::Keyboard::Space))
                 {
                     if(_gameState != GameStates::gameOver)
@@ -71,6 +80,8 @@ void GameState::Update(float dt)
     if(_gameState != GameStates::gameOver)
         {
             bird->Animate(BIRD_ANIMATION_TIME);
+
+            background->Move(dt);
 
             land->MoveLand(dt);
         }
@@ -98,6 +109,7 @@ void GameState::Update(float dt)
                     if(Collision::BoundingBoxTest(bird->GetSprite(),
                                                   landSprites[i]))
                         {
+                            this->_data->sound.Play("hit");
                             _gameState = GameStates::gameOver;
                             _clock.restart();
                         }
@@ -113,6 +125,7 @@ void GameState::Update(float dt)
                     if(Collision::PixelPerfectTest(bird->GetSprite(),
                                                    pipeSprites[i]))
                         {
+                            this->_data->sound.Play("hit");
                             _gameState = GameStates::gameOver;
                             _clock.restart();
                         }
@@ -129,6 +142,7 @@ void GameState::Update(float dt)
                     if(Collision::BoundingBoxTest(bird->GetSprite(),
                                                   scoringSprites[i]))
                         {
+                            this->_data->sound.Play("point");
                             _score++;
                             hud->UpdateScore(_score);
                             scoringSprites.erase(scoringSprites.begin() + i);
@@ -138,6 +152,7 @@ void GameState::Update(float dt)
 
     if(_gameState == GameStates::gameOver)
         {
+            this->bird->AnimateDeath(dt);
             this->flash->Update(dt);
             if(_clock.getElapsedTime().asSeconds() > TIME_BEFORE_GAME_OVER)
                 {
@@ -150,7 +165,8 @@ void GameState::Update(float dt)
 void GameState::Draw(float dt)
 {
     _data->window.clear();
-    _data->window.draw(_background);
+    // _data->window.draw(_background);
+    background->Draw();
     pipe->DrawPipes();
     land->DrawLand();
     bird->Draw();

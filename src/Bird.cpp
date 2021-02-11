@@ -9,10 +9,10 @@ Bird::Bird(GameDataRef data) : _data(data)
 
     _animationFrames.push_back(_data->assets.GetTexture("bird 1"));
     _animationFrames.push_back(_data->assets.GetTexture("bird 2"));
-    _animationFrames.push_back(_data->assets.GetTexture("bird 3"));
-    _animationFrames.push_back(_data->assets.GetTexture("bird 4"));
+    _deathFrames.push_back(_data->assets.GetTexture("bird 3"));
+    _deathFrames.push_back(_data->assets.GetTexture("bird 4"));
 
-    _birdSprite.setScale(0.75f, 0.75f);
+    _birdSprite.setScale(0.4f, 0.4f);
 
     _birdSprite.setTexture(_animationFrames[_animationIterator]);
 
@@ -41,7 +41,32 @@ void Bird::Animate(float dt)
 
     if(_clock.getElapsedTime().asSeconds() > (dt / _animationFrames.size()))
         {
-            if(_animationIterator < _animationFrames.size() - 1)
+            if(_birdState != BIRD_STATE_FALLING)
+                {
+
+                    if(_animationIterator < _animationFrames.size() - 1)
+                        {
+                            _animationIterator++;
+                        }
+                    else
+                        {
+                            _animationIterator = 0;
+                        }
+
+                    _birdSprite.setTexture(
+                        _animationFrames[_animationIterator]);
+                    _clock.restart();
+                }
+        }
+}
+
+void Bird::AnimateDeath(float dt)
+{
+    _animationIterator = 0;
+
+    if(_clock.getElapsedTime().asSeconds() > (dt / _deathFrames.size()))
+        {
+            if(_animationIterator < _deathFrames.size() - 1)
                 {
                     _animationIterator++;
                 }
@@ -50,7 +75,7 @@ void Bird::Animate(float dt)
                     _animationIterator = 0;
                 }
 
-            _birdSprite.setTexture(_animationFrames[_animationIterator]);
+            _birdSprite.setTexture(_deathFrames[_animationIterator]);
             _clock.restart();
         }
 }
@@ -101,6 +126,7 @@ void Bird::Update(float dt)
 void Bird::Tap()
 {
     _mouvementClock.restart();
+    this->_data->sound.Play("wing");
     _birdState = BIRD_STATE_FLYING;
 }
 

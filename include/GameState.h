@@ -12,6 +12,8 @@
 #include "Pipe.h"
 #include "State.h"
 #include "config.h"
+#include "Background.h"
+#include "SoundManager.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
@@ -44,6 +46,9 @@ class GameState : public State
     Hud* hud;
 
     Flash* flash;
+
+    Background* background;
+
 
     sf::Clock _clock;
 

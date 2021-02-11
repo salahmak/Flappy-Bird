@@ -37,7 +37,7 @@ configure_file(include/config.h.in config.h)
 find_package(SFML 2.5 COMPONENTS system window graphics audio REQUIRED)
 
 # Compile executable
-add_executable(FlappyBird src/Rng.cpp src/main.cpp src/Flash.cpp src/Hud.cpp src/StateMachine.cpp src/AssetManager.cpp src/InputManager.cpp src/Game.cpp src/SplashState.cpp src/MainMenuState.cpp src/GameState.cpp src/GameOverState.cpp src/Pipe.cpp src/Land.cpp src/Bird.cpp src/Collision.cpp)
+add_executable(FlappyBird src/SoundManager.cpp src/Background.cpp src/Rng.cpp src/main.cpp src/Flash.cpp src/Hud.cpp src/StateMachine.cpp src/AssetManager.cpp src/InputManager.cpp src/Game.cpp src/SplashState.cpp src/MainMenuState.cpp src/GameState.cpp src/GameOverState.cpp src/Pipe.cpp src/Land.cpp src/Bird.cpp src/Collision.cpp)
 
 # Set include directory search paths
 target_include_directories(FlappyBird 

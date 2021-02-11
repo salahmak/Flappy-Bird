@@ -38,6 +38,10 @@ void MainMenuState::Init()
 
     _title.setTexture(this->_data->assets.GetTexture("game title"));
 
+    // setting the scale of the background
+    _background.setScale(SCREEN_WIDTH / _background.getGlobalBounds().width,
+                         SCREEN_HEIGHT / _background.getGlobalBounds().height);
+
     // setting the title's position
     _title.setScale(0.15f, 0.15f);
 
@@ -46,7 +50,6 @@ void MainMenuState::Init()
                        (_title.getGlobalBounds().height / 2));
 
     // setting the play btn's position
-    _playBtn.setScale(2.0f, 2.0f);
     _playBtn.setPosition(
         (SCREEN_WIDTH / 2) - (_playBtn.getGlobalBounds().width / 2),
         (SCREEN_HEIGHT / 2) - (_playBtn.getGlobalBounds().height / 2));

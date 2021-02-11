@@ -42,12 +42,6 @@ GameOverState::GameOverState(GameDataRef data, int score)
 
 void GameOverState::Init()
 {
-    // loading the game over texture
-    _data->assets.LoadTexture("game over", GAME_OVER);
-
-    // loading the game over body texture
-    _data->assets.LoadTexture("game over body", GAME_OVER_BODY);
-
     // setting the texture of the background
     _background.setTexture(_data->assets.GetTexture("background"));
 
@@ -59,6 +53,11 @@ void GameOverState::Init()
 
     // setting the playBtn texture
     _playBtn.setTexture(this->_data->assets.GetTexture("play button"));
+
+
+    // setting the scale of the background
+    _background.setScale(SCREEN_WIDTH / _background.getGlobalBounds().width,
+                         SCREEN_HEIGHT / _background.getGlobalBounds().height);
 
     // setting the position of the game over body
     _gameOverBody.setScale(0.75f, 0.75f);
@@ -73,7 +72,6 @@ void GameOverState::Init()
                           (_gameOver.getGlobalBounds().height / 2));
 
     // setting the play btn's position
-    _playBtn.setScale(2.0f, 2.0f);
     _playBtn.setPosition((SCREEN_WIDTH / 2)
                              - (_playBtn.getGlobalBounds().width / 2),
                          (SCREEN_HEIGHT - (SCREEN_HEIGHT / 5)
@@ -95,7 +93,7 @@ void GameOverState::Init()
     _scoreText.setOrigin(_scoreText.getGlobalBounds().width / 2,
                          _scoreText.getGlobalBounds().height / 2);
 
-    _scoreText.setPosition((SCREEN_WIDTH / 10) * 6.7,
+    _scoreText.setPosition((SCREEN_WIDTH / 10) * 6.25,
                            (SCREEN_HEIGHT / 10) * 4.1);
 
     // setting the high score fonts
@@ -114,7 +112,7 @@ void GameOverState::Init()
     _highScoreText.setOrigin(_highScoreText.getGlobalBounds().width / 2,
                              _highScoreText.getGlobalBounds().height / 2);
 
-    _highScoreText.setPosition((SCREEN_WIDTH / 10) * 6.7,
+    _highScoreText.setPosition((SCREEN_WIDTH / 10) * 6.25,
                                (SCREEN_HEIGHT / 10) * 5.2);
 }
 

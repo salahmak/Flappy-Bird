@@ -32,6 +32,16 @@ bool InputManager::IsKeyPressed(sf::Event event, sf::Keyboard::Key key)
     return false;
 }
 
+bool InputManager::IsMouseClicked(sf::Event event, sf::Mouse::Button button)
+{
+    if(event.type == sf::Event::MouseButtonPressed
+       && event.mouseButton.button == button)
+        {
+            return true;
+        }
+    return false;
+}
+
 sf::Vector2i InputManager::GetMousePosition(sf::RenderWindow& window)
 {
     return sf::Mouse::getPosition(window);
