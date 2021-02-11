@@ -19,6 +19,8 @@ class AssetManager
     void LoadFont(std::string name, std::string path);
     sf::Font& GetFont(std::string name);
 
+    void UnloadTexture(std::string name);
+
   private:
     std::map<std::string, sf::Texture> _Textures;
     std::map<std::string, sf::Font> _Fonts;

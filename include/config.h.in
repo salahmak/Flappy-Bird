@@ -11,39 +11,39 @@
 #define FRAMERATE 60.0f
 
 #define SPLASH_STATE_SHOW_TIME 0.1f
-#define SPLASH_SCENE_IMAGE_PATH "@RESOURCE_PATH@res/splash_bg.png"
+#define SPLASH_SCENE_IMAGE_PATH "@RESOURCE_PATH@textures/splash_bg.png"
 
-#define BACKGROUND_PATH "@RESOURCE_PATH@res/sky.png"
-#define GAME_TITLE_PATH "@RESOURCE_PATH@res/title.png"
-#define PLAY_BUTTON_PATH "@RESOURCE_PATH@res/play_btn.png"
-
-
-
-#define GAME_OVER "@RESOURCE_PATH@res/game-over.png"
-#define GAME_OVER_BODY "@RESOURCE_PATH@res/game-over-body.png"
+#define BACKGROUND_PATH "@RESOURCE_PATH@textures/sky.png"
+#define GAME_TITLE_PATH "@RESOURCE_PATH@textures/title.png"
+#define PLAY_BUTTON_PATH "@RESOURCE_PATH@textures/play_btn.png"
 
 
-// #define PIPE_DOWN_PATH "@RESOURCE_PATH@res/PipeDown.png"
-// #define PIPE_UP_PATH "@RESOURCE_PATH@res/PipeUp.png"
 
-#define PIPE_DOWN_PATH "@RESOURCE_PATH@res/pipeDown1.png"
-#define PIPE_UP_PATH "@RESOURCE_PATH@res/pipeUp1.png"
+#define GAME_OVER "@RESOURCE_PATH@textures/game-over.png"
+#define GAME_OVER_BODY "@RESOURCE_PATH@textures/game-over-body.png"
 
 
-#define PIPE_PATH "@RESOURCE_PATH@res/pipeUp1.png"
+// #define PIPE_DOWN_PATH "@RESOURCE_PATH@textures/PipeDown.png"
+// #define PIPE_UP_PATH "@RESOURCE_PATH@textures/PipeUp.png"
+
+#define PIPE_DOWN_PATH "@RESOURCE_PATH@textures/pipeDown.png"
+#define PIPE_UP_PATH "@RESOURCE_PATH@textures/pipeUp.png"
+
+
+#define PIPE_PATH "@RESOURCE_PATH@textures/pipeUp1.png"
 
 
 #define PIPE_SPEED 200.0f
 #define PIPE_SPAWN_FREQ 1.3f
 
 
-#define LAND_PATH "@RESOURCE_PATH@res/land.png"
+#define LAND_PATH "@RESOURCE_PATH@textures/land.png"
 
 
-#define BIRD_FRAME_1_PATH "@RESOURCE_PATH@res/bird-01.png"
-#define BIRD_FRAME_2_PATH "@RESOURCE_PATH@res/bird-02.png"
-#define BIRD_FRAME_3_PATH "@RESOURCE_PATH@res/bird-03.png"
-#define BIRD_FRAME_4_PATH "@RESOURCE_PATH@res/bird-04.png"
+#define BIRD_FRAME_1_PATH "@RESOURCE_PATH@textures/bird-01.png"
+#define BIRD_FRAME_2_PATH "@RESOURCE_PATH@textures/bird-02.png"
+#define BIRD_FRAME_3_PATH "@RESOURCE_PATH@textures/bird-03.png"
+#define BIRD_FRAME_4_PATH "@RESOURCE_PATH@textures/bird-04.png"
 
 
 

@@ -28,6 +28,12 @@ void AssetManager::LoadFont(std::string name, std::string path)
         }
 }
 
+
+void AssetManager::UnloadTexture(std::string name)
+{
+    this->_Fonts.erase(name);
+}
+
 sf::Font& AssetManager::GetFont(std::string name)
 {
     return this->_Fonts[name];

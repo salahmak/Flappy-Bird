@@ -30,17 +30,6 @@ MainMenuState::~MainMenuState() {}
 
 void MainMenuState::Init()
 {
-    // loading the main menu background
-    _data->assets.LoadTexture("background", BACKGROUND_PATH);
-
-    // loading the title image
-    _data->assets.LoadTexture("game title", GAME_TITLE_PATH);
-
-    // loading the play button image
-    _data->assets.LoadTexture("play button", PLAY_BUTTON_PATH);
-
-    // loading the flappyfont font
-    _data->assets.LoadFont("score font", FLAPPY_FONT_PATH);
 
     // setting the texture of the background, play btn, title to their sprites
     _background.setTexture(this->_data->assets.GetTexture("background"));
@@ -96,7 +85,6 @@ void MainMenuState::HandleInput()
             if(this->_data->input.IsSpriteClicked(
                    _playBtn, event, sf::Mouse::Left, this->_data->window))
                 {
-                    std::cout << "clicked" << std::endl;
                     this->_data->machine.AddState(
                         StateRef(new GameState(_data, _highScore)), true);
                 }

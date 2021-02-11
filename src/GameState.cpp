@@ -10,7 +10,6 @@ GameState::GameState(GameDataRef data, int highScore)
 }
 GameState::~GameState()
 {
-    std::cout << "destructor called" << std::endl;
     delete this->pipe;
     delete this->land;
     delete this->hud;
@@ -20,20 +19,7 @@ GameState::~GameState()
 
 void GameState::Init()
 {
-    // loading the pipeDown texture
-    _data->assets.LoadTexture("pipe down", PIPE_DOWN_PATH);
 
-    // loading the PipeUp texture
-    _data->assets.LoadTexture("pipe up", PIPE_UP_PATH);
-
-    // loading the land texture
-    _data->assets.LoadTexture("land", LAND_PATH);
-
-    // loading the bird frames
-    _data->assets.LoadTexture("bird 1", BIRD_FRAME_1_PATH);
-    _data->assets.LoadTexture("bird 2", BIRD_FRAME_2_PATH);
-    _data->assets.LoadTexture("bird 3", BIRD_FRAME_3_PATH);
-    _data->assets.LoadTexture("bird 4", BIRD_FRAME_4_PATH);
 
     pipe = new Pipe(this->_data);
 
