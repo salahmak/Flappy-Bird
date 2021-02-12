@@ -4,7 +4,25 @@
 namespace GameWrapper
 {
 
-SplashState::SplashState(GameDataRef data) : _data(data) {}
+SplashState::SplashState(GameDataRef data) : _data(data)
+{
+    // loading the assets
+    _data->assets.LoadTexture("splash background", SPLASH_SCENE_IMAGE_PATH);
+
+    // displaying the splash screen before loading the assets
+    _background.setTexture(
+        this->_data->assets.GetTexture("splash background"));
+
+    _background.setScale(this->_data->window.getSize().x
+                             / _background.getGlobalBounds().width,
+                         this->_data->window.getSize().y
+                             / _background.getGlobalBounds().height);
+
+    _data->window.clear();
+    _data->window.draw(_background);
+    _data->window.display();
+    ;
+}
 SplashState::~SplashState()
 {
     this->_data->assets.UnloadTexture("splash background");
@@ -12,12 +30,6 @@ SplashState::~SplashState()
 
 void SplashState::Init()
 {
-
-    // loading the assets
-    _data->assets.LoadTexture("splash background", SPLASH_SCENE_IMAGE_PATH);
-
-    _background.setTexture(
-        this->_data->assets.GetTexture("splash background"));
 
     // loading the main menu background
     _data->assets.LoadTexture("background", BACKGROUND_PATH);
@@ -52,14 +64,10 @@ void SplashState::Init()
     _data->assets.LoadTexture("bird 3", BIRD_FRAME_3_PATH);
     _data->assets.LoadTexture("bird 4", BIRD_FRAME_4_PATH);
 
-
-
     // loading the required sounds
     this->_data->sound.LoadSound("hit", HIT_SOUND_PATH);
     this->_data->sound.LoadSound("point", POINT_SOUND_PATH);
     this->_data->sound.LoadSound("wing", WING_SOUND_PATH);
-
-
 
     this->_data->sound.Init();
 }

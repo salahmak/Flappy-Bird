@@ -54,7 +54,6 @@ void GameOverState::Init()
     // setting the playBtn texture
     _playBtn.setTexture(this->_data->assets.GetTexture("play button"));
 
-
     // setting the scale of the background
     _background.setScale(SCREEN_WIDTH / _background.getGlobalBounds().width,
                          SCREEN_HEIGHT / _background.getGlobalBounds().height);
@@ -66,10 +65,12 @@ void GameOverState::Init()
         (SCREEN_HEIGHT / 2.2) - (_gameOverBody.getGlobalBounds().height / 2));
 
     // setting the position of the game over title
+    _gameOver.setOrigin(_gameOver.getGlobalBounds().width / 2,
+                        _gameOver.getGlobalBounds().height / 2);
+
     _gameOver.setScale(0.75f, 0.75f);
-    _gameOver.setPosition((SCREEN_WIDTH / 2)
-                              - (_gameOver.getGlobalBounds().width / 2),
-                          (_gameOver.getGlobalBounds().height / 2));
+    _gameOver.setPosition((SCREEN_WIDTH / 2),
+                          (_gameOver.getGlobalBounds().height));
 
     // setting the play btn's position
     _playBtn.setPosition((SCREEN_WIDTH / 2)

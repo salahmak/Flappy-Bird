@@ -1,8 +1,8 @@
 #include "GameState.h"
 #include "GameOverState.h"
 
-//todo MAKE THE BACKGROUND ANIMATED ---> done
-//todo add sounds
+// todo MAKE THE BACKGROUND ANIMATED ---> done
+// todo add sounds
 
 namespace GameWrapper
 {
