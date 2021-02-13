@@ -9,8 +9,6 @@ Bird::Bird(GameDataRef data) : _data(data)
 
     _animationFrames.push_back(_data->assets.GetTexture("bird 1"));
     _animationFrames.push_back(_data->assets.GetTexture("bird 2"));
-    _animationFrames.push_back(_data->assets.GetTexture("bird 3"));
-    _animationFrames.push_back(_data->assets.GetTexture("bird 4"));
     _deathFrames.push_back(_data->assets.GetTexture("bird 3"));
     _deathFrames.push_back(_data->assets.GetTexture("bird 4"));
 
